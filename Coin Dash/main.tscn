@@ -25,11 +25,11 @@ stretch_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("3_ti4lc")]
 
-[node name="GameTimer" type="Timer" parent="."]
-
 [node name="HUD" parent="." instance=ExtResource("5_ol2sf")]
+
+[node name="GameTimer" type="Timer" parent="."]
 
 [connection signal="hurt" from="Player" to="." method="_on_player_hurt"]
 [connection signal="pickup" from="Player" to="." method="_on_player_pickup"]
 [connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
-[connection signal="timeout" from="HUD" to="." method="_on_hud_timeout"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

@@ -35,27 +35,14 @@ func _ready():
 	$Player.hide()
 	
 
-func _process(delta):
+func _process(_delta):
 	if playing and get_tree().get_nodes_in_group("coins").size() == 0:
 		level += 1 
 		time_left += 5
 		spawn_coins()
 	
-
-		
-
-
-
-func _on_hud_timeout():
-	time_left -= 1
-	$HUD.update_timer(time_left)
-	if time_left <= 0:
-		game_over()
-
-
 func _on_player_hurt():
 	game_over()
-
 
 func _on_player_pickup():
 	score += 1
@@ -71,3 +58,12 @@ func game_over():
 
 func _on_hud_start_game():
 	new_game()
+
+
+func _on_game_timer_timeout():
+	time_left -= 1
+	$HUD.update_timer(time_left)
+	if time_left <= 0:
+		game_over()
+	
+

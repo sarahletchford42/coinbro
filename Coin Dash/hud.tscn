@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://r5jbnup587a"]
+[gd_scene load_steps=4 format=3 uid="uid://r5jbnup587a"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_ougoj"]
 [ext_resource type="FontFile" uid="uid://ck2ojp065q7le" path="res://assets/Kenney Bold.ttf" id="1_pcvk6"]
-[ext_resource type="Script" path="res://Timer.gd" id="3_xqmwt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_aimec"]
 font = ExtResource("1_pcvk6")
@@ -52,7 +51,6 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-script = ExtResource("3_xqmwt")
 
 [node name="StartButton" type="Button" parent="."]
 anchors_preset = 7
