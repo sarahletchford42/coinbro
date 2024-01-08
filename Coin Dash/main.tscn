@@ -1,14 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvrdyx55glvd4"]
+[gd_scene load_steps=12 format=3 uid="uid://bvrdyx55glvd4"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_kypxl"]
 [ext_resource type="Texture2D" uid="uid://cbenlupy3lac5" path="res://assets/grass.png" id="2_jaqs5"]
 [ext_resource type="PackedScene" uid="uid://eh758wljek6i" path="res://coin.tscn" id="2_r1ksu"]
+[ext_resource type="PackedScene" uid="uid://ckmu5dgm2lfm7" path="res://powerup.tscn" id="3_h3w8x"]
 [ext_resource type="PackedScene" uid="uid://cqjui506d430q" path="res://player.tscn" id="3_ti4lc"]
+[ext_resource type="PackedScene" uid="uid://c7osaxlxuutuf" path="res://succulent.tscn" id="4_gf2g5"]
 [ext_resource type="PackedScene" uid="uid://r5jbnup587a" path="res://hud.tscn" id="5_ol2sf"]
+[ext_resource type="AudioStream" uid="uid://d3d45562wib4e" path="res://assets/audio/Coin.wav" id="6_s5fsm"]
+[ext_resource type="AudioStream" uid="uid://6jhtn2q7wm3p" path="res://assets/audio/Level.wav" id="7_qpe5v"]
+[ext_resource type="AudioStream" uid="uid://ybna3eg7s2ii" path="res://assets/audio/EndSound.wav" id="8_526rj"]
+[ext_resource type="AudioStream" uid="uid://bhmw1jr040wa5" path="res://assets/audio/Powerup.wav" id="10_k6e5t"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_kypxl")
 coin_scene = ExtResource("2_r1ksu")
+powerup_scene = ExtResource("3_h3w8x")
+succulent = ExtResource("4_gf2g5")
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -29,7 +37,24 @@ stretch_mode = 1
 
 [node name="GameTimer" type="Timer" parent="."]
 
+[node name="CoinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_s5fsm")
+
+[node name="LevelSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_qpe5v")
+
+[node name="EndSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_526rj")
+
+[node name="PowerupTimer" type="Timer" parent="."]
+wait_time = 6.823
+one_shot = true
+
+[node name="PowerupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_k6e5t")
+
 [connection signal="hurt" from="Player" to="." method="_on_player_hurt"]
 [connection signal="pickup" from="Player" to="." method="_on_player_pickup"]
 [connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
+[connection signal="timeout" from="PowerupTimer" to="." method="_on_powerup_timer_timeout"]

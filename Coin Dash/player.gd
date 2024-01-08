@@ -43,7 +43,11 @@ func _on_area_entered(area):
 	# when collide w an object, decide what do
 	if area.is_in_group("coins"):
 		area.pickup()
-		pickup.emit()
+		pickup.emit("coin")
+	if area.is_in_group("powerups"):
+		area.pickup()
+		pickup.emit("powerup")
 	if area.is_in_group("obstacles"):
+		position = Vector2(randi_range(0, screensize.x), randi_range(0, screensize.y))
 		hurt.emit()
 		die()

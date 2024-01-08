@@ -18,4 +18,7 @@ func _ready():
 func _on_timer_timeout():
 	$AnimatedSprite2D.frame = 0
 	$AnimatedSprite2D.play()
-	
+
+
+func _on_lifetime_timeout():
+	queue_free()
