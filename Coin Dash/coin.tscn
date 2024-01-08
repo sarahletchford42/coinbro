@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://eh758wljek6i"]
+[gd_scene load_steps=15 format=3 uid="uid://eh758wljek6i"]
 
+[ext_resource type="Script" path="res://coin.gd" id="1_61gcn"]
 [ext_resource type="Texture2D" uid="uid://dkmh0v8q1p3on" path="res://assets/coin/coin-frame-1.png" id="1_nfke7"]
 [ext_resource type="Texture2D" uid="uid://85xu25t1ghgy" path="res://assets/coin/coin-frame-2.png" id="2_4jlpu"]
 [ext_resource type="Texture2D" uid="uid://8uvcx2py7ark" path="res://assets/coin/coin-frame-3.png" id="3_m7pce"]
@@ -56,14 +57,16 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_semai"]
 radius = 19.9249
 
-[node name="Coin" type="Area2D"]
+[node name="Coin" type="Area2D" groups=["coins"]]
 position = Vector2(23, 23)
+script = ExtResource("1_61gcn")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_genmt")
 animation = &"Shine"
+frame_progress = 0.118306
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_semai")
